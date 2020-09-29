@@ -15,8 +15,6 @@ public class Teste {
         AlunoControle controle = new AlunoControle();
         aluno = controle.criarAluno(aluno);
 
-        System.out.println("A matricula é:"  +aluno.getMatricula());
-
 
         aluno.setNome("Ze Ninguem Da Silva");
 
