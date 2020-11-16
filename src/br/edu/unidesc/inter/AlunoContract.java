@@ -7,5 +7,6 @@ public interface AlunoContract {
     Aluno recuperarAluno(String cpf);
     Aluno atualizarAluno(Aluno aluno);
     Boolean deletarAluno(String cpf);
+    void gravarAluno();
 
 }

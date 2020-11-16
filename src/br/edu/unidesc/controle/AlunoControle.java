@@ -3,11 +3,10 @@ package br.edu.unidesc.controle;
 import br.edu.unidesc.entidades.Aluno;
 import br.edu.unidesc.inter.AlunoContract;
 
-import javax.imageio.IIOException;
-import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,21 +14,14 @@ import java.util.List;
 public class AlunoControle implements AlunoContract {
     private final String ARQUIVO_CSV="aluno.csv";
     private final String SEPARADOR =",";
-    private boolean append;
 
-    public AlunoControle() throws Exception
-    {
-
-        System.out.println(ARQUIVO_CSV);
-    }
 
      private List<Aluno> alunos = new ArrayList<>();
 
     @Override
     public Aluno criarAluno(Aluno aluno) {
 
-        File f =new File(ARQUIVO_CSV);
-        if (if.exists())
+
 
         aluno.setMatricula();
 
@@ -48,22 +40,9 @@ public class AlunoControle implements AlunoContract {
             }
         return null;
     }
-    private void gravarArquivo(Aluno aluno) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(aluno.getNome())
-                .append(SEPARADOR)
-                .append(aluno.getCpf());
+    private void gravarArquivo(Aluno aluno)
+    {
 
-        try {
-            FileWriter fw = new FileWriter(ARQUIVO_CSV, append:true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(sb.toString());
-            bw.newLine();
-            bw.close();
-        } catch (IIOException e);
-        {
-            e.printStackTrace;
-        }
     }
 
     @Override
@@ -88,6 +67,22 @@ public class AlunoControle implements AlunoContract {
         }
         return false;
     }
+
+    @Override
+    public void gravarAluno() {
+            try {
+                File arquivo = new File("aluno.csv");
+                arquivo.createNewFile();
+                FileWriter fileWriter = new FileWriter(arquivo);
+                BufferedWriter implementaConteudo = new BufferedWriter(fileWriter);
+                implementaConteudo.write("Aluno: Carlos\n" + "CPF: 123456789-40\n" + "Curso: Sistemas de Informação");
+                implementaConteudo.close();
+                fileWriter.close();
+            } catch (IOException ex) {
+
+            }
+        }
+
     private void salvarEntidade(Aluno aluno) {
         alunos.add(aluno);
     }
